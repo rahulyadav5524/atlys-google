@@ -64,9 +64,9 @@ const ImageSearch = () => {
 
   const handleArrowClick = (dir: "left" | "right") => {
     if (dir === "left") {
-      setSelectedIndex(prev => (prev === 0 ? data.length - 1 : prev - 1));
+      setSelectedIndex(prev => (prev === 0 ? prev : prev - 1));
     } else {
-      setSelectedIndex(prev => (prev === data.length - 1 ? 0 : prev + 1));
+      setSelectedIndex(prev => (prev === data.length - 1 ? prev : prev + 1));
     }
   };
 
