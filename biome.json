@@ -1,0 +1,109 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "a11y": {
+        "noRedundantAlt": "warn",
+        "noAutofocus": "off",
+        "noSvgWithoutTitle": "off",
+        "useAriaPropsForRole": "off",
+        "useButtonType": "warn",
+        "useIframeTitle": "warn",
+        "useKeyWithClickEvents": "off",
+        "useKeyWithMouseEvents": "off",
+        "useMediaCaption": "off",
+        "noNoninteractiveTabindex": "warn"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "warn",
+        "noUnusedImports": "error"
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": "warn",
+        "noForEach": "warn",
+        "noUselessTypeConstraint": "warn"
+      },
+      "style": {
+        "noImplicitBoolean": "off",
+        "noNegationElse": "off",
+        "useFragmentSyntax": "error",
+        "useNamingConvention": "off",
+        "useShorthandArrayType": "error",
+        "useSingleCaseStatement": "error",
+        "noNonNullAssertion": "warn"
+      },
+      "suspicious": {
+        "noArrayIndexKey": "warn"
+      },
+      "nursery": {
+        "noRestrictedImports": {
+          "level": "error",
+          "options": {
+            "paths": {
+              "@mui/icons-material": "Import from 'src/mui-imports' instead.",
+              "@mui/material": "Import from 'src/mui-imports' instead."
+            }
+          }
+        }
+      }
+    }
+  },
+  "files": {
+    "ignoreUnknown": true,
+    "ignore": [
+      "dist/",
+      "node_modules/",
+      "storybook-static/",
+      ".vscode/",
+      ".git/",
+      ".github/",
+      ".husky/",
+      ".storybook/",
+      "kubernetes/",
+      "coverage/",
+      "package-lock.json",
+      "package.json"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "attributePosition": "multiline",
+    "lineWidth": 140,
+    "indentWidth": 2,
+    "indentStyle": "space"
+  },
+  "javascript": {
+    "formatter": {
+      "enabled": true,
+      "arrowParentheses": "asNeeded",
+      "jsxQuoteStyle": "double",
+      "semicolons": "always",
+      "trailingCommas": "none",
+      "quoteProperties": "asNeeded",
+      "bracketSpacing": true,
+      "bracketSameLine": true,
+      "quoteStyle": "double"
+    }
+  },
+  "json": {
+    "formatter": {
+      "enabled": true
+    }
+  },
+  "css": {
+    "formatter": {
+      "enabled": true
+    },
+    "linter": {
+      "enabled": true
+    },
+    "parser": {
+      "cssModules": true
+    }
+  }
+}

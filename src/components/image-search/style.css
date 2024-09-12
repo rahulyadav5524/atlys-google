@@ -1,0 +1,22 @@
+.image-info-popover {
+  background-color: #303134;
+  box-shadow: 0 1px 6px 0 #171717;
+  box-sizing: border-box;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 400px;
+  min-width: 400px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 1200px) {
+  .image-info-popover {
+    position: absolute;
+    right: 10px;
+    top: 210px;
+    position: fixed;
+    z-index: 125;
+  }
+}
