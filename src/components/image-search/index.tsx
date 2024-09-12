@@ -99,7 +99,7 @@ const ImageSearch = () => {
           <div
             id={`image-${image.id}`}
             key={image.id}
-            className={cn("aspect-square cursor-pointer bg-gray-200 rounded-lg overflow-hidden h-[204px] flex-grow", {
+            className={cn("aspect-square cursor-pointer bg-gray-200 rounded-lg overflow-hidden h-[156px] md:h-[204px] flex-grow", {
               "border border-blue-500": selectedIndex === index
             })}
             onClick={() => handleOnImageClick(index)}>

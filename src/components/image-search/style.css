@@ -17,6 +17,23 @@
     right: 10px;
     top: 210px;
     position: fixed;
+    bottom: 0px;
     z-index: 125;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .image-info-popover {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    min-width: none;
+    max-width: none;
+    position: fixed;
+    z-index: 125;
+    height: auto;
+    border-radius: 0px;
   }
 }

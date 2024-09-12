@@ -68,9 +68,9 @@ const Carousal = () => {
             key={index}
             className="border border-[#414141] rounded-md overflow-hidden h-[48px] flex items-center min-w-fit mr-[8px]">
             <img
-              src={`https://picsum.photos/200/200?random=${index}`}
+              src={`https://picsum.photos/100/100?random=${index}`}
               alt=""
-              className="w-full h-full object-cover"
+              className="object-cover w-[48px] h-[48px]"
             />
             <span className="px-3 text-sm font-semibold">Amg</span>
           </div>
@@ -80,7 +80,7 @@ const Carousal = () => {
   );
 };
 
-const actionItems = ["All", "Images", "Shopping", "News", "Videos", "Maps", "More"];
+const actionItems = ["All", "Images", "Shopping", "News", "Videos"];
 
 export function Home() {
   return (
