@@ -1,36 +1,43 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./style.css";
 import { usePicsum } from "@/hooks/usePicsum";
 import { cn } from "@/lib/utils";
 import ImageInfo from "./info";
 
 const ImageSearch = () => {
-  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
+  const [_, setRender] = useState<number>(0);
+  const selectedIndex = useRef<number>(-1);
 
   const { data } = usePicsum();
 
   const handleOnImageClick = (index: number) => {
-    setSelectedIndex(index);
+    selectedIndex.current = index;
     const el = document.getElementById(`image-${data[index].id}`);
 
     if (el) {
-      console.log(el);
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      el.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
+
+    setRender(prev => prev + 1);
   };
 
   const handleArrowClick = (dir: "left" | "right") => {
     if (dir === "left") {
-      setSelectedIndex(prev => (prev === 0 ? prev : prev - 1));
+      handleOnImageClick(selectedIndex.current === 0 ? selectedIndex.current : selectedIndex.current - 1);
     } else {
-      setSelectedIndex(prev => (prev === data.length - 1 ? prev : prev + 1));
+      handleOnImageClick(selectedIndex.current === data.length - 1 ? selectedIndex.current : selectedIndex.current + 1);
     }
+  };
+
+  const handleReset = () => {
+    selectedIndex.current = -1;
+    setRender(prev => prev + 1);
   };
 
   const handleKeyDown = (e: KeyboardEvent) => {
     switch (e.key) {
       case "Escape":
-        setSelectedIndex(-1);
+        handleReset();
         break;
       case "ArrowLeft":
         handleArrowClick("left");
@@ -47,7 +54,7 @@ const ImageSearch = () => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [data]);
 
   return (
     <main className="mx-auto mt-4 px-4 flex gap-5 relative overflow-hidden">
@@ -57,7 +64,7 @@ const ImageSearch = () => {
             id={`image-${image.id}`}
             key={image.id}
             className={cn("aspect-square cursor-pointer bg-gray-200 rounded-lg overflow-hidden h-[156px] md:h-[204px] flex-grow", {
-              "border border-blue-500": selectedIndex === index
+              "border border-blue-500": selectedIndex.current === index
             })}
             onClick={() => handleOnImageClick(index)}>
             <img
@@ -69,11 +76,11 @@ const ImageSearch = () => {
           </div>
         ))}
       </div>
-      {selectedIndex > -1 && (
+      {selectedIndex.current > -1 && (
         <ImageInfo
-          image={data[selectedIndex]}
+          image={data[selectedIndex.current]}
           handleArrowClick={handleArrowClick}
-          handleClose={() => setSelectedIndex(-1)}
+          handleClose={handleReset}
         />
       )}
     </main>
