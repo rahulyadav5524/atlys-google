@@ -1,4 +1,4 @@
 # How to run
-  Clone the repo
-  Run yarn to install dependencies
-  Run the server with yarn dev
+  - Clone the repo
+  - Run npm to install dependencies `npm i`
+  - Run the server with npm dev `npm run dev`
